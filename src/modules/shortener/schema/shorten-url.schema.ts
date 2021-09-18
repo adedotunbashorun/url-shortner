@@ -18,7 +18,11 @@ export class ShortenUrl extends BaseModel {
   @Matches(httpsRegex, {
     message: 'Please enter a valid url: http://... or https://...',
   })
-  url: string;
+  url?: string;
+
+  @ApiProperty({ description: 'feature config name' })
+  @IsString()
+  code?: string;
 
   @ApiProperty({ description: 'feature config enabled?' })
   @Prop({ type: String })

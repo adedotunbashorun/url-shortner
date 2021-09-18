@@ -35,7 +35,7 @@ export class ShortenerController {
   })
   @Post('decode')
   public async decode(
-    @Body() payload: { code: string },
+    @Body() payload: ShortenUrl,
   ): Promise<ShortenUrlDocument> {
     return this.shortenerService.get(payload.code);
   }
