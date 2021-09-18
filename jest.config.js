@@ -15,4 +15,5 @@ module.exports = {
     "^@shortener/core/(.*)$": "<rootDir>/src/modules/core/$1",
     "^@shortener/shortener/(.*)$": "<rootDir>/src/modules/shortener/$1"
   },
+  testTimeout: 30000
 };
