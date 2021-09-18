@@ -1,10 +1,10 @@
 import { Document, SchemaTypes } from 'mongoose';
 import { Prop, SchemaFactory } from '@nestjs/mongoose';
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, PickType } from '@nestjs/swagger';
 
 import BaseModel from '@shortener/core/schema/base.schema';
 import { BaseSchema } from '@shortener/core/schema/base.schema.decorator';
-import { IsString, IsUrl, Matches } from 'class-validator';
+import { IsNotEmpty, IsString, IsUrl, Matches } from 'class-validator';
 
 export type ShortenUrlDocument = ShortenUrl & Document;
 const httpsRegex = /^(ftp|https?):\/\/+(www\.)?[a-z0-9\-\.]{3,}\.[a-z]{3}$/;
@@ -21,6 +21,7 @@ export class ShortenUrl extends BaseModel {
   url?: string;
 
   @ApiProperty({ description: 'feature config name' })
+  @IsNotEmpty()
   @IsString()
   code?: string;
 
@@ -42,12 +43,16 @@ export class ShortenUrl extends BaseModel {
         ];
         count: number;
       },
-    ];
+    ]
   };
 
   @ApiProperty({ description: 'feature config deleted?' })
   @Prop({ type: Boolean, default: false })
   isDeleted?: boolean;
 }
+
+export class Code extends PickType(ShortenUrl, ['code'] as const) {}
+
+export class Url extends PickType(ShortenUrl, ['url'] as const) {}
 
 export const ShortenUrlSchema = SchemaFactory.createForClass(ShortenUrl);

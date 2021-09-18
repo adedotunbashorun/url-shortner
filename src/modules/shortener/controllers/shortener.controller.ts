@@ -5,8 +5,9 @@ import { ApiEndpoint } from '@shortener/core/decorators/api-doc.decorator';
 import { Request, Response } from 'express';
 
 import {
-  ShortenUrl,
+  Code,
   ShortenUrlDocument,
+  Url,
 } from '@shortener/shortener/schema/shorten-url.schema';
 import { ShortenerService } from '../services/shortener.service';
 import { ValidationPipe } from '@shortener/core/pipes/validation.pipe';
@@ -23,7 +24,7 @@ export class ShortenerController {
   })
   @Post('encode')
   public async create(
-    @Body(ValidationPipe) payload: ShortenUrl,
+    @Body(ValidationPipe) payload: Url,
   ): Promise<ShortenUrlDocument> {
     return this.shortenerService.generateShortenedUrl(payload);
   }
@@ -35,7 +36,7 @@ export class ShortenerController {
   })
   @Post('decode')
   public async decode(
-    @Body() payload: ShortenUrl,
+    @Body(ValidationPipe) payload: Code,
   ): Promise<ShortenUrlDocument> {
     return this.shortenerService.get(payload.code);
   }
