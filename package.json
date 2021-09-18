@@ -44,7 +44,7 @@
   "devDependencies": {
     "@nestjs/cli": "^7.5.6",
     "@nestjs/schematics": "^7.2.7",
-    "@nestjs/testing": "^7.6.13",
+    "@nestjs/testing": "^8.0.6",
     "@types/express": "^4.17.11",
     "@types/jest": "^26.0.20",
     "@types/node": "^14.14.31",
@@ -69,8 +69,13 @@
       "json",
       "ts"
     ],
+    "moduleNameMapper": {
+      "^@config/(.*)$": "<rootDir>/src/config/$1",
+      "^@shortener/core/(.*)$": "<rootDir>/src/modules/core/$1",
+      "^@shortener/shortener/(.*)$": "<rootDir>/src/modules/shortener/$1"
+    },
     "rootDir": "src",
-    "testRegex": ".*\\.spec\\.ts$",
+    "testRegex": ".spec.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },

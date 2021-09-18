@@ -9,14 +9,18 @@
     "target": "es2017",
     "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "incremental": true,
+    "allowJs": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
     "paths": {
-      "@config/*": ["config/*"],
-      "@shortener/config/*": ["config/*"],
-      "@shortener/core/*": ["modules/core/*"],
-      "@shortener/shortener/*": ["modules/shortener/*"]
-    },
+      "@config/*": ["src/config/*"],
+      "@shortener/config/*": ["src/config/*"],
+      "@shortener/core/*": ["src/modules/core/*"],
+      "@shortener/shortener/*": ["src/modules/shortener/*"]
+    }
   },
   "include": ["src", "./node_modules/@types/jest"],
   "exclude": ["node_modules", "dist", "coverage"],

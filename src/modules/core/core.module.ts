@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import configuration from '@shortener/config/configuration';
+import configuration from '@config/configuration';
 import { ShortenerModule } from '@shortener/shortener/shortener.module';
+import CoreController from '@shortener/core/core.controller';
 
 @Module({
   imports: [
@@ -13,6 +14,6 @@ import { ShortenerModule } from '@shortener/shortener/shortener.module';
     MongooseModule.forRoot(configuration().database.url),
     ShortenerModule,
   ],
-  controllers: [],
+  controllers: [CoreController],
 })
 export default class CoreModule {}

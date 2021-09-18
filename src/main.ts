@@ -5,7 +5,7 @@ import * as Sentry from '@sentry/node';
 import { HttpExceptionFilter } from '@shortener/core/exceptions/http-exception.filter';
 import { ValidationFilter } from '@shortener/core/exceptions/validation.filter';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import useSwaggerUIAuthStoragePlugin from 'swagger_plugin';
+import useSwaggerUIAuthStoragePlugin from './swagger_plugin';
 import SentryInterceptor from '@shortener/core/interceptor/sentry.interceptor';
 import { json, urlencoded } from 'express';
 import * as helmet from 'helmet';
