@@ -86,10 +86,10 @@ export class ShortenerService {
       const resp: any = { uniqueVisit: [] };
       const uniqueData = {
         ipAddress: req.connection.remoteAddress,
-        // mode: req.headers['sec-ch-ua-mobile'],
+        // mode: req.headers['sec-ch-ua-mobile'], //check if it from mobile or not
         device: [
           {
-            name: req.headers['sec-ch-ua-platform'],
+            name: (req.headers['sec-ch-ua-platform'] as string).replace(/[^\w\s]/gi, ''),
             count: 1,
           },
         ],
@@ -126,7 +126,6 @@ export class ShortenerService {
       } else {
         resp.uniqueVisit.push(uniqueData);
       }
-      console.log(JSON.stringify(resp));
 
       await this.shortenerModel.findByIdAndUpdate(url.id, { analytics: resp });
 
