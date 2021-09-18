@@ -34,8 +34,20 @@ export class ShortenerController {
     description: 'return shortened url successful',
   })
   @Post('decode')
-  public async decode(@Body() payload: { code: string }): Promise<string> {
+  public async decode(
+    @Body() payload: { code: string },
+  ): Promise<ShortenUrlDocument> {
     return this.shortenerService.get(payload.code);
+  }
+
+  @ApiEndpoint('return url stats')
+  @ApiResponse({
+    status: 201,
+    description: 'return shortened url stats successful',
+  })
+  @Get('statistics/:code')
+  public async getStats(@Param('code') code: string): Promise<unknown> {
+    return (await this.shortenerService.get(code)).analytics;
   }
 
   @ApiEndpoint('redirect to original url and keep starts')

@@ -67,10 +67,9 @@ export class ShortenerService {
     }
   }
 
-  async get(code: string): Promise<string> {
+  async get(code: string): Promise<ShortenUrlDocument> {
     const shortenedUrl = `${configuration().api.baseUrl}/${code}`;
-    console.log(shortenedUrl);
-    return (await this.shortenerModel.findOne({ shortenedUrl })).url;
+    return this.shortenerModel.findOne({ shortenedUrl });
   }
 
   async gotoOriginalUrl(
