@@ -30,12 +30,12 @@ describe('ShortenerController Unit Tests', () => {
     expect(controller).toBeDefined();
   });
 
-  it('calling generateShortenedUrl method', () => {
+  it('calling generateShortenedUrl method it encode the url', () => {
     const dto = new ShortenUrl();
     expect(controller.create(dto)).not.toEqual(null);
   });
 
-  it('calling generateShortenedUrl method', () => {
+  it('calling generateShortenedUrl method it encode the url', () => {
     const dto = new ShortenUrl();
     controller.create(dto);
     expect(spyService.generateShortenedUrl).toHaveBeenCalled();
