@@ -9,7 +9,7 @@ import {
   ShortenUrlDocument,
   Url,
 } from '@shortener/shortener/schema/shorten-url.schema';
-import { ShortenerService } from '../services/shortener.service';
+import { ShortenerService } from '@shortener/shortener/services/shortener.service';
 import { ValidationPipe } from '@shortener/core/pipes/validation.pipe';
 
 @Controller('')

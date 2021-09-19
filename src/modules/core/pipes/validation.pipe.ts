@@ -5,8 +5,8 @@ import {
 } from '@nestjs/common';
 import { merge } from 'lodash';
 
-import { ValidationException } from '../exceptions/validation.exception';
-import { UtilService } from '../services/UtilService';
+import { ValidationException } from '@shortener/core/exceptions/validation.exception';
+import { UtilService } from '@shortener/core/services/UtilService';
 
 export class ValidationPipe extends VP {
   constructor(options?: ValidationPipeOptions) {

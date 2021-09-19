@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { Test, TestingModule } from '@nestjs/testing';
-import { ShortenerController } from './shortener.controller';
-import { ShortenerService } from '../services/shortener.service';
-import { ShortenUrl } from '../schema/shorten-url.schema';
+import { ShortenerController } from '@shortener/shortener/controllers/shortener.controller';
+import { ShortenerService } from '@shortener/shortener/services/shortener.service';
+import { ShortenUrl } from '@shortener/shortener/schema/shorten-url.schema';
 
 describe('ShortenerController Unit Tests', () => {
   let controller: ShortenerController;
