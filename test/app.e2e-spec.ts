@@ -22,7 +22,7 @@ describe('AppController (e2e)', () => {
       .expect('Working');
   });
 
-  afterEach(async done => {
+  afterAll(async done => {
     await app.close();
     done();
   });

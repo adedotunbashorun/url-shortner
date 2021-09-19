@@ -7,6 +7,7 @@ import { ShortenUrl } from '../schema/shorten-url.schema';
 describe('ShortenerController Unit Tests', () => {
   let controller: ShortenerController;
   let spyService: ShortenerService;
+  let app: TestingModule;
 
   beforeEach(async () => {
     const ApiServiceProvider = {
@@ -17,7 +18,7 @@ describe('ShortenerController Unit Tests', () => {
         gotoOriginalUrl: jest.fn(() => {}),
       }),
     };
-    const app: TestingModule = await Test.createTestingModule({
+    app = await Test.createTestingModule({
       controllers: [ShortenerController],
       providers: [ShortenerService, ApiServiceProvider],
     }).compile();
@@ -53,5 +54,9 @@ describe('ShortenerController Unit Tests', () => {
     const code = '3789';
     controller.getStats(code);
     expect(spyService.get).toHaveBeenCalled();
+  });
+
+  afterAll(async () => {
+    await app.close();
   });
 });

@@ -15,13 +15,14 @@ class ApiServiceMock {
 }
 describe('ShortenerService', () => {
   let service: ShortenerService;
+  let module: TestingModule;
 
   beforeEach(async () => {
     const ApiServiceProvider = {
       provide: ShortenerService,
       useClass: ApiServiceMock,
     }
-    const module: TestingModule = await Test.createTestingModule({
+    module = await Test.createTestingModule({
       providers: [ShortenerService, ApiServiceProvider],
     }).compile();
 
@@ -48,5 +49,9 @@ describe('ShortenerService', () => {
     const req: any = {};
     service.gotoOriginalUrl(req, code);
     expect(gotoSpy).toHaveBeenCalledWith(req, code);
+  });
+
+  afterAll(async () => {
+    await module.close();
   });
 });
