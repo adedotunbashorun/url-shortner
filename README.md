@@ -31,6 +31,17 @@
 ```bash
 $ npm install
 ```
+## Setup App
+
+```bash
+$ cp .env.example .env
+```
+
+## Setup Env Variables In Your .env file
+
+1. Set up your mongo database-host (mongo-url)
+2. set up port, default port 2001
+3. set up api url e.g http://localhost:2001
 
 ## Running the app
 
