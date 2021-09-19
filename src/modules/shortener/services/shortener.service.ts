@@ -89,7 +89,9 @@ export class ShortenerService {
         // mode: req.headers['sec-ch-ua-mobile'], //check if it from mobile or not
         device: [
           {
-            name: (req.headers['sec-ch-ua-platform'] as string).replace(/[^\w\s]/gi, ''),
+            name: req.headers['sec-ch-ua-platform'] ? 
+              (req.headers['sec-ch-ua-platform'] as string).replace(/[^\w\s]/gi, '') :
+               'unknown',
             count: 1,
           },
         ],
