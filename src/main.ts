@@ -27,7 +27,7 @@ async function bootstrap() {
   app.setGlobalPrefix('/');
 
   const options = new DocumentBuilder()
-    .setTitle('Shorten Url Database Bento API')
+    .setTitle('Shorten Url API')
     .setDescription('API endpoints for Shorten Url')
     .addBearerAuth({ type: 'http', scheme: 'bearer', bearerFormat: 'JWT' })
     .setVersion('0.1')
